@@ -6,4 +6,7 @@ Barzahlen Payment Module (Gambio GX2)
 http://www.barzahlen.de
 
 ==Current Version==
-1.1.2
+1.1.3
+
+==User Manual==
+http://www.barzahlen.de/partner/integration/shopsysteme/1/gambio
