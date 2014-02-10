@@ -81,7 +81,7 @@ class barzahlen {
       return false;
     }
 
-    if($order->info['total'] < MODULE_PAYMENT_BARZAHLEN_MAXORDERTOTAL && in_array($order->info['currency'], $this->currencies)) {
+    if($this->_getOrderAmount() < MODULE_PAYMENT_BARZAHLEN_MAXORDERTOTAL && in_array($order->info['currency'], $this->currencies)) {
       $title = $this->title;
       $description = str_replace('{{image}}', xtc_image('http://cdn.barzahlen.de/images/barzahlen_logo.png'), MODULE_PAYMENT_BARZAHLEN_TEXT_FRONTEND_DESCRIPTION);
 
@@ -139,7 +139,7 @@ class barzahlen {
 
     $transData = array();
     $transData['customer_email'] = $order->customer['email_address'];
-    $transData['amount'] = (string)round($order->info['total'], 2);
+    $transData['amount'] = $this->_getOrderAmount();
     $transData['currency'] = $order->info['currency'];
     $transData['language'] = $_SESSION['language_code'];
     $transData['order_id'] = '';
@@ -318,6 +318,27 @@ class barzahlen {
                  'MODULE_PAYMENT_BARZAHLEN_EXPIRED_STATUS',
                  'MODULE_PAYMENT_BARZAHLEN_SORT_ORDER',
                  'MODULE_PAYMENT_BARZAHLEN_DEBUG');
+  }
+
+  /**
+   * Returns real order amount, including shipping tax amount.
+   *
+   * @return order amount as float
+   */
+  function _getOrderAmount() {
+    global $order;
+
+    if($order->info['shipping_cost'] > 0) {
+      $shipping_id = explode('_', $order->info['shipping_class']);
+      $check_query = xtc_db_query('SELECT configuration_value FROM '.TABLE_CONFIGURATION.' WHERE configuration_key = "MODULE_SHIPPING_'.xtc_db_input($shipping_id[0]).'_TAX_CLASS"');
+      $configuration = xtc_db_fetch_array($check_query);
+      $tax_class_id = $configuration['configuration_value'];
+      $shipping_tax_rate = xtc_get_tax_rate($tax_class_id)/100;
+      return ceil(($order->info['total'] + $order->info['shipping_cost']*$shipping_tax_rate)*100) / 100;
+    }
+    else {
+      return $order->info['total'];
+    }
   }
 
   /**

@@ -124,6 +124,7 @@ class order {
         $this->customer['email_address'] = 'foo@bar.com';
         $this->info['total'] = '122.07';
         $this->info['currency'] = 'EUR';
+        $this->info['shipping_cost'] = 0;
         $this->customer['street_address'] = 'Musterstr. 1a';
         $this->customer['postcode'] = '12345';
         $this->customer['city'] = 'Musterstadt';
