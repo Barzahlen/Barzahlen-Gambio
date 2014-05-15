@@ -4,11 +4,14 @@
 https://integration.barzahlen.de/de/shopsysteme/gambio/nutzerhandbuch
 
 ## Current Version
-1.1.8
+1.1.9
 
 ## Changelog
 
-### 1.1.8 (10.02.2013)
+### 1.1.9 (15.05.2014)
+* added missing tax amounts for b2b customers to total amount
+
+### 1.1.8 (10.02.2014)
 * plugin check works in PHP versions lower than 5.2 now
 * bugfix for refund callbacks
 * updated payment selection layout
