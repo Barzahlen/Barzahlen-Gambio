@@ -2,22 +2,7 @@
 /**
  * Barzahlen Payment Module (Gambio)
  *
- * NOTICE OF LICENSE
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; version 2 of the License
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
- * @copyright   Copyright (c) 2012 Zerebro Internet GmbH (http://www.barzahlen.de)
+ * @copyright   Copyright (c) 2014 Cash Payment Solutions GmbH (https://www.barzahlen.de)
  * @author      Alexander Diebler
  * @license     http://opensource.org/licenses/GPL-2.0  GNU General Public License, version 2 (GPL-2.0)
  */
@@ -57,6 +42,10 @@ define('MODULE_PAYMENT_BARZAHLEN_NOTIFICATIONKEY', '20bc75e9ca4b72f4b216bf623299
 define('MODULE_PAYMENT_BARZAHLEN_MAXORDERTOTAL', '999.99');
 define('MODULE_PAYMENT_BARZAHLEN_SORT_ORDER', '0');
 
+define('SHOPID', '10483');
+define('PAYMENTKEY', 'de74310368a4718a48e0e244fbf3e22e2ae117f2');
+define('NOTIFICATIONKEY', 'e5354004de1001f86004090d01982a6e05da1c12');
+
 /**
  * DB-Handler
  */
@@ -78,10 +67,11 @@ class db_handler
      */
     public function __destruct()
     {
-        $delete = mysql_query("TRUNCATE TABLE " . TABLE_CONFIGURATION);
-        $delete = mysql_query("TRUNCATE TABLE " . TABLE_ORDERS);
-        $delete = mysql_query("TRUNCATE TABLE " . TABLE_ORDERS_STATUS_HISTORY);
-        $delete = mysql_query("TRUNCATE TABLE " . TABLE_ORDERS_TOTAL);
+        mysql_query("DROP TABLE " . TABLE_CONFIGURATION);
+        mysql_query("DROP TABLE " . TABLE_ORDERS);
+        mysql_query("DROP TABLE " . TABLE_ORDERS_STATUS_HISTORY);
+        mysql_query("DROP TABLE " . TABLE_ORDERS_TOTAL);
+        mysql_close();
     }
 }
 
@@ -101,6 +91,19 @@ function xtc_db_num_rows($query)
 function xtc_db_fetch_array($query)
 {
     return mysql_fetch_array($query);
+}
+
+function xtc_db_perform($table, $array)
+{
+    $keys = "";
+    $values = "";
+    foreach($array as $key => $value) {
+        $keys .= $key . ", ";
+        $values .= "'" . $value . "', ";
+    }
+    $query = "INSERT INTO " . $table . " (" . substr($keys, 0, -2) . ") VALUES (" . substr($values, 0, -2) . ");";
+
+    return mysql_query($query);
 }
 
 /**
