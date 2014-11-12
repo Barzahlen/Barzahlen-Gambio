@@ -5,9 +5,13 @@ DE - https://integration.barzahlen.de/de/shopsysteme/gambio/nutzerhandbuch
 EN - https://integration.barzahlen.de/en/shopsystems/gambio/user-manual
 
 ## Current Version
-1.2.0
+1.2.1
 
 ## Changelog
+
+### 1.2.1 (12.11.2014)
+* added support for Gambio v2.1.x.x
+* bugfix for sandbox setting
 
 ### 1.2.0 (10.11.2014)
 * integrated Barzahlen PHP SDK v1.1.7 (Payment & Cancel)

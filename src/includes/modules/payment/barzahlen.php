@@ -17,7 +17,7 @@ class barzahlen
     function barzahlen()
     {
         $this->code = 'barzahlen';
-        $this->version = '1.2.0';
+        $this->version = '1.2.1';
         $this->title = MODULE_PAYMENT_BARZAHLEN_TEXT_TITLE;
         $this->description = '<div align="center">' . xtc_image('https://cdn.barzahlen.de/images/barzahlen_logo.png', MODULE_PAYMENT_BARZAHLEN_TEXT_TITLE) . '</div><br>' . MODULE_PAYMENT_BARZAHLEN_TEXT_DESCRIPTION;
         $this->sort_order = MODULE_PAYMENT_BARZAHLEN_SORT_ORDER;
@@ -164,7 +164,6 @@ class barzahlen
             $api->handleRequest($payment);
         } catch (Exception $e) {
             $this->bzLog('barzahlen/payment: ' . $e);
-            xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'payment_error=barzahlen&' . session_name() . '=' . session_id(), 'SSL'));
         }
 
         if($payment->isValid()) {
@@ -350,8 +349,10 @@ class barzahlen
      */
     function createApi()
     {
-        $api = new Barzahlen_Api(MODULE_PAYMENT_BARZAHLEN_SHOPID, MODULE_PAYMENT_BARZAHLEN_PAYMENTKEY, MODULE_PAYMENT_BARZAHLEN_SANDBOX);
-        $api->setDebug(MODULE_PAYMENT_BARZAHLEN_DEBUG, $this->logFile);
+        $sandbox = MODULE_PAYMENT_BARZAHLEN_SANDBOX == 'True' ? true : false;
+        $debug = MODULE_PAYMENT_BARZAHLEN_SANDBOX == 'True' ? true : false;
+        $api = new Barzahlen_Api(MODULE_PAYMENT_BARZAHLEN_SHOPID, MODULE_PAYMENT_BARZAHLEN_PAYMENTKEY, $sandbox);
+        $api->setDebug($debug, $this->logFile);
         $api->setUserAgent('Gambio ' . $this->getGambioVersion() . ' / Plugin v' . $this->version);
 
         return $api;
