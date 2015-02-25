@@ -1,5 +1,5 @@
-<!--BOF - Barzahlen - 2013-01-28: Barzahlen Checkout Page-->
-{if $INFOTEXT_1 != ''}
-{$INFOTEXT_1}
+<!--BOF - Barzahlen - 2015-02-25: Barzahlen Checkout Page-->
+{if $BARZAHLEN_BLOCK}
+{$BARZAHLEN_BLOCK}
 {/if}
-<!--EOF - Barzahlen - 2013-01-28: Barzahlen Checkout Page-->
+<!--EOF - Barzahlen - 2015-02-25: Barzahlen Checkout Page-->

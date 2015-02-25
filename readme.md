@@ -5,9 +5,12 @@ DE - https://integration.barzahlen.de/de/shopsysteme/gambio/nutzerhandbuch
 EN - https://integration.barzahlen.de/en/shopsystems/gambio/user-manual
 
 ## Current Version
-1.2.1
+1.2.2
 
 ## Changelog
+
+### 1.2.2 (25.02.2015)
+* using CheckoutSuccessExtenderComponent for Gambio GX2
 
 ### 1.2.1 (12.11.2014)
 * added support for Gambio v2.1.x.x
@@ -66,7 +69,7 @@ EN - https://integration.barzahlen.de/en/shopsystems/gambio/user-manual
 The Barzahlen Team will happily assist you with any problems or questions. Send us an email to support@barzahlen.de or use the contact form at https://integration.barzahlen.de/en/support.
 
 ## Copyright
-(c) 2014, Cash Payment Solutions GmbH  
+(c) 2015, Cash Payment Solutions GmbH  
 https://www.barzahlen.de
 
 ## NOTICE OF LICENSE
