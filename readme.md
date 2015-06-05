@@ -5,9 +5,13 @@ DE - https://integration.barzahlen.de/de/shopsysteme/gambio/nutzerhandbuch
 EN - https://integration.barzahlen.de/en/shopsystems/gambio/user-manual
 
 ## Current Version
-1.2.2
+1.2.3
 
 ## Changelog
+
+### 1.2.3 (05.06.2015)
+* improved payment selection
+* updated to Barzahlen PHP SDK v1.1.8
 
 ### 1.2.2 (25.02.2015)
 * using CheckoutSuccessExtenderComponent for Gambio GX2

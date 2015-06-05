@@ -1,4 +1,11 @@
 <?php
+/**
+ * Barzahlen Payment Module (Gambio)
+ *
+ * @copyright   Copyright (c) 2015 Cash Payment Solutions GmbH (https://www.barzahlen.de)
+ * @author      Alexander Diebler
+ * @license     http://opensource.org/licenses/GPL-2.0  GNU General Public License, version 2 (GPL-2.0)
+ */
 
 class BarzahlenCheckoutSuccessExtender extends BarzahlenCheckoutSuccessExtender_parent
 {

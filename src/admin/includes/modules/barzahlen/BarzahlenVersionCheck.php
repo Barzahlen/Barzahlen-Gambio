@@ -14,7 +14,7 @@
 class BarzahlenVersionCheck
 {
     const SHOP_SYSTEM = "Gambio";
-    const PLUGIN_VERSION = "1.2.2";
+    const PLUGIN_VERSION = "1.2.3";
 
     /**
      * @var BarzahlenPluginCheckRequest

@@ -15,7 +15,7 @@ class Barzahlen_Api extends Barzahlen_Base
     protected $_allowLanguages = array('de', 'en'); //!< allowed languages for requests
     protected $_sandbox = false; //!< sandbox settings
     protected $_madeAttempts = 0; //!< performed attempts
-    protected $_userAgent = 'PHP SDK v1.1.7';
+    protected $_userAgent = 'PHP SDK v1.1.8';
 
     /**
      * Constructor. Sets basic settings.
@@ -58,7 +58,7 @@ class Barzahlen_Api extends Barzahlen_Base
     /**
      * Handles request of all kinds.
      *
-     * @param Barzahlen_Request $request request that should be made
+     * @param Barzahlen_Request_Base $request request that should be made
      */
     public function handleRequest($request)
     {
