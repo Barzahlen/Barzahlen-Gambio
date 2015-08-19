@@ -1,13 +1,16 @@
 # Barzahlen Payment Module (Gambio GX2)
 
 ## User Manual
-DE - https://integration.barzahlen.de/de/shopsysteme/gambio/nutzerhandbuch  
+DE - https://integration.barzahlen.de/de/shopsysteme/gambio/nutzerhandbuch
 EN - https://integration.barzahlen.de/en/shopsystems/gambio/user-manual
 
 ## Current Version
-1.2.3
+1.2.4
 
 ## Changelog
+
+### 1.2.4 (19.08.2015)
+* improve file require strategy
 
 ### 1.2.3 (05.06.2015)
 * improved payment selection
@@ -73,7 +76,7 @@ EN - https://integration.barzahlen.de/en/shopsystems/gambio/user-manual
 The Barzahlen Team will happily assist you with any problems or questions. Send us an email to support@barzahlen.de or use the contact form at https://integration.barzahlen.de/en/support.
 
 ## Copyright
-(c) 2015, Cash Payment Solutions GmbH  
+(c) 2015, Cash Payment Solutions GmbH
 https://www.barzahlen.de
 
 ## NOTICE OF LICENSE
